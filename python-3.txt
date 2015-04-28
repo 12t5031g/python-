@@ -1,0 +1,104 @@
+～練習問題3.1～
+Traceback (most recent call last):
+  File "rensyu3-3.py", line 1, in <module>
+    epeat_lyrics()
+NameError: name 'repeat_lyrics' is not defined
+
+　これは実行前にrepeat_lyrics関数を定義する前に実行しようとしているためである。
+
+
+～練習問題3.2～
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
+
+　実行が定義の後ならば、定義の順番は関係ないようだ。
+
+～練習問題3.3～
+def right_justify(moji):
+	print "%70s" % moji
+
+right_justify('allen')
+
+　print 表示させる文字を引数とし、変数に格納するようにし、その変数を表示する %s の内側に使用したい文字数を入力するとちょうどその文字数までを変数として表示し、足りなければ空白で埋め、それ以上ならば切り捨てる。
+　因みに左詰ならば数字の頭に「-」をつければよい。
+
+
+～練習問題3.4～
+①
+＊＊＊実行結果＊＊＊
+spam
+spam
+
+②
+＊＊＊プログラム＊＊＊
+def do_twice(f,g):
+    f(g)
+    f(g)
+def print_spam(g):
+    print 'spam'
+do_twice( print_spam , 'GGG')
+
+＊＊＊実行結果＊＊＊
+spam
+spam
+
+＊＊＊考察＊＊＊
+print_spam関数が引数を必要としてないので、引数適当な値を入れ取りあえずプログラムを実行できる形にしたが腑に落ちない。
+
+③
+＊＊＊プログラム＊＊＊
+def do_twice(f,g):
+    f(g)
+    f(g)
+def print_twice(g):
+    print g
+    print g
+do_twice( print_twice , 'GGG')
+
+＊＊＊実行結果＊＊＊
+GGG
+GGG
+GGG
+GGG
+＊＊＊考察＊＊＊
+print で表示するものを単なる文字列ではなく、do_twice で入力された変数にするために後ろに変数 g をおいた。そして print_twice で二回表示するためdo_twice で二重に二回表示するので四つ表示された。
+
+
+④
+＊＊＊プログラム＊＊＊
+def do_twice(f,g):
+    f(g)
+    f(g)
+def print_twice(g):
+    print g
+    print g
+do_twice( print_twice , 'GGG' )
+
+def do_four(h,i):
+	do_twice( h , i )
+	do_twice( h , i )
+do_four( print_twice , 'spam' )
+
+＊＊＊実行結果＊＊＊
+GGG
+GGG
+GGG
+GGG
+spam
+spam
+spam
+spam
+spam
+spam
+spam
+spam
+
+＊＊＊考察＊＊＊
+do_twiceを利用して実行できた。
+実行する関数オブジェクトがprint_twiceなので四回実行すると八個出てきてしまったのだが実行できていることには変わりはない。
+
+～練習問題3.5～
+すこし難しかったのでできなかった。
+だがきっと一行一行書くプログラムを作成してそれを数回実行する関数を作れば問題ないと思われる。
